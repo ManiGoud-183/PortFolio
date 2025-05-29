@@ -3,18 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ediga Manideeksith - Aspiring Software Developer | CS Student | </title>
+    <title>Ediga Manideeksith - Aspiring Software Developer | CS Student</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Custom styles for active navigation link */
+      .active {
+        font-weight: bold;
+        /* color: #c7d2fe; /* Lighter indigo for active desktop link */
+      }
+      /* Smooth scroll behavior */
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Ensure header doesn't overlap content */
+      body {
+        padding-top: 0; /* Adjust if header height is dynamic and not fixed, but sticky header handles this */
+      }
+      section:first-of-type {
+        /* Add padding to the first section to account for the sticky header height */
+        /* This value should ideally match or exceed the header's height */
+         padding-top: 120px; /* Default padding top for the first section */
+      }
+
+      @media (min-width: 768px) { /* md breakpoint */
+        section:first-of-type {
+           padding-top: 100px; /* Adjusted padding top for medium screens */
+        }
+      }
+
+    </style>
   </head>
   <body class="bg-gray-100 font-inter">
-    <header class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-6 px-4 sm:px-6 md:px-8">
+    <header class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-6 px-4 sm:px-6 md:px-8 sticky top-0 z-50 shadow-lg">
       <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
         <div class="flex items-center mb-4 md:mb-0">
-          <h1 class="text-3xl font-bold mr-4">Ediga Manideeksith</h1>
-          <span class="inline-block bg-black/50 text-xs px-2 py-1 rounded-full border border-white/20">Aspiring Software Developer</span>
+          <h1 class="text-3xl font-bold mr-2">Ediga Manideeksith</h1> <span class="inline-block bg-black/50 text-xs px-2 py-1 rounded-full border border-white/20 whitespace-nowrap">Aspiring Software Developer</span>
         </div>
-        <nav class="hidden md:block">
+        <nav class="hidden md:block nav-links">
           <ul class="flex space-x-6">
             <li><a href="#about" class="hover:text-gray-200 transition duration-300">About</a></li>
             <li><a href="#skills" class="hover:text-gray-200 transition duration-300">Skills</a></li>
@@ -31,80 +57,73 @@
       </div>
     </header>
 
-    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-50">
-      <div class="bg-gray-800 w-80 h-full absolute right-0 p-6">
-        <div class="flex justify-end mb-4">
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-95 z-40 md:hidden">
+      <div class="bg-gray-800 w-4/5 max-w-sm h-full absolute right-0 p-6 shadow-xl transform transition-transform duration-300 ease-in-out">
+        <div class="flex justify-end mb-8">
           <button id="close-menu-btn" class="text-white focus:outline-none" aria-label="Close Menu">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-             </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
           </button>
         </div>
-        <nav class="block">
-          <ul class="space-y-4">
-            <li><a href="#about" class="block text-lg text-white hover:text-gray-300 transition duration-300">About</a></li>
-            <li><a href="#skills" class="block text-lg text-white hover:text-gray-300 transition duration-300">Skills</a></li>
-            <li><a href="#projects" class="block text-lg text-white hover:text-gray-300 transition duration-300">Projects</a></li>
-            <li><a href="#experience" class="block text-lg text-white hover:text-gray-300 transition duration-300">Experience</a></li>
-            <li><a href="#contact" class="block text-lg text-white hover:text-gray-300 transition duration-300">Contact</a></li>
+        <nav class="block nav-links">
+          <ul class="space-y-6">
+            <li><a href="#about" class="block text-xl text-white hover:text-indigo-300 transition duration-300">About</a></li>
+            <li><a href="#skills" class="block text-xl text-white hover:text-indigo-300 transition duration-300">Skills</a></li>
+            <li><a href="#projects" class="block text-xl text-white hover:text-indigo-300 transition duration-300">Projects</a></li>
+            <li><a href="#experience" class="block text-xl text-white hover:text-indigo-300 transition duration-300">Experience</a></li>
+            <li><a href="#contact" class="block text-xl text-white hover:text-indigo-300 transition duration-300">Contact</a></li>
           </ul>
         </nav>
       </div>
     </div>
 
-    <section id="about" class="bg-gray-100 py-16 px-4 sm:px-6 md:px-8">
-      <div class="container mx-auto grid md:grid-cols-2 gap-8 items-center">
-        <div>
-          <h2 class="text-3xl font-semibold text-gray-800 mb-4">About Me</h2>
-          <p class="text-gray-700 leading-relaxed">
+    <section id="about" class="bg-gray-100 py-16 px-4 sm:px-6 md:px-8"> 
+      <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div class="md:order-2 flex justify-center">
+            <img 
+                src="https://github.com/ManiGoud-183/PortFolio/blob/main/Chinna.jpg?raw=true" 
+                alt="Ediga Manideeksith" 
+                class="w-3/4 sm:w-2/3 md:w-full max-w-md h-auto rounded-lg shadow-xl object-cover"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x400/E0E7FF/4F46E5?text=Manideeksith';" 
+            />
+        </div>
+        <div class="md:order-1">
+          <h2 class="text-4xl font-bold text-gray-800 mb-6">About Me</h2>
+          <p class="text-gray-700 leading-relaxed text-lg">
             An enthusiastic AI/ML software engineer with a strong foundation in programming and game development, in the software industry, showcasing proficiency in Python. Skill set includes object-oriented programming (OOPS) and design patterns, along with a solid grasp of data structure concepts.
           </p>
         </div>
-        <div class="rounded-lg flex justify-center bg-gray-100">
-            <img src="https://github.com/ManiGoud-183/PortFolio/blob/main/Chinna.jpg?raw=true" alt="Ediga Manideeksith" class="w-3/4 h-auto block" />
-          </div>
       </div>
     </section>
 
     <section id="skills" class="bg-white py-16 px-4 sm:px-6 md:px-8">
       <div class="container mx-auto">
-        <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Skills</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="bg-gray-50 rounded-lg shadow-md p-6 flex items-center">
-            <div>
-              <h3 class="text-xl font-semibold text-gray-800">Python</h3>
-              <p class="text-gray-600">Proficient in Python for AI development.</p>
-            </div>
+        <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">Skills</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-gray-50 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Python</h3>
+            <p class="text-gray-600">Proficient in Python for AI development, web scraping, and automation.</p>
           </div>
-          <div class="bg-gray-50 rounded-lg shadow-md p-6 flex items-center">
-            <div>
-              <h3 class="text-xl font-semibold text-gray-800">Figma</h3>
-              <p class="text-gray-600">Experienced in Figma for UI/UX Design.</p>
-            </div>
+          <div class="bg-gray-50 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Figma</h3>
+            <p class="text-gray-600">Experienced in Figma for UI/UX Design, creating intuitive and user-friendly interfaces.</p>
           </div>
-          <div class="bg-gray-50 rounded-lg shadow-md p-6 flex items-center">
-            <div>
-              <h3 class="text-xl font-semibold text-gray-800">Generative AI</h3>
-              <p class="text-gray-600">Knowledge of Generative AI concepts and applications.</p>
-            </div>
+          <div class="bg-gray-50 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Generative AI</h3>
+            <p class="text-gray-600">Knowledge of Generative AI concepts and applications, including LLMs and diffusion models.</p>
           </div>
-          <div class="bg-gray-50 rounded-lg shadow-md p-6 flex items-center">
-            <div>
-              <h3 class="text-xl font-semibold text-gray-800">Power BI</h3>
-              <p class="text-gray-600">Experience with Power BI in Data Analysis.</p>
-            </div>
+          <div class="bg-gray-50 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Power BI</h3>
+            <p class="text-gray-600">Experience with Power BI in Data Analysis, creating insightful dashboards and reports.</p>
           </div>
-          <div class="bg-gray-50 rounded-lg shadow-md p-6 flex items-center">
-            <div>
-              <h3 class="text-xl font-semibold text-gray-800">Enterprise Resource Planning</h3>
-              <p class="text-gray-600">Enhancement of seamless integration of workflows ensuring smooth data transfer.</p>
-            </div>
+          <div class="bg-gray-50 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Enterprise Resource Planning</h3>
+            <p class="text-gray-600">Enhancement of seamless integration of workflows ensuring smooth data transfer.</p>
           </div>
-          <div class="bg-gray-50 rounded-lg shadow-md p-6 flex items-center">
-            <div>
-              <h3 class="text-xl font-semibold text-gray-800">Retrieval Augmented Generation (RAG)</h3>
-              <p class="text-gray-600">Deep understanding of RAG architecture.</p>
-            </div>
+          <div class="bg-gray-50 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Retrieval Augmented Generation (RAG)</h3>
+            <p class="text-gray-600">Deep understanding of RAG architecture for enhancing LLM responses with external data.</p>
           </div>
         </div>
       </div>
@@ -112,24 +131,57 @@
 
     <section id="projects" class="bg-gray-100 py-16 px-4 sm:px-6 md:px-8">
       <div class="container mx-auto">
-        <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
-          <div class="bg-white rounded-lg shadow-md p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">AI Chat Assistant</h3>
-            <p class="text-gray-600 mb-4">
+        <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-10">
+          <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-3">AI Chat Assistant</h3>
+            <p class="text-gray-700 mb-4 leading-relaxed">
               Developed a modern AI-powered document chat assistant using Python, FastAPI, and Angular. Implemented RAG (Retrieval-Augmented Generation) architecture, leveraging vector databases and LLMs for efficient document querying and response generation.
             </p>
-             <p class="text-gray-600 mb-2">
-              Technology Stack: Python, Vector Database(FAISS), LLM’s(Gemini,OpenAI), FastAPI, Langchain, JavaScript
+            <p class="text-gray-600 mb-3">
+              <strong>Technology Stack:</strong> Python, Vector Database(FAISS), LLM’s(Gemini, OpenAI), FastAPI, Langchain, JavaScript, Angular
             </p>
-            <ul class="list-disc list-inside text-gray-700">
-                <li>Document ingestion and processing: developed a system to ingest various document types, clean the data, remove noisy data, process them into chunks, and store in a vector database for efficient retrieval</li>
-                <li>Contextual querying: implemented a RAG (Retrieval-Augmented Generation) system that allows users to ask questions about the ingested documents and receive relevant answers</li>
-                <li>Answer generation: utilized LLMs to generate human-like responses based on the retrieved document chunks, ensuring accuracy and coherence</li>
-                <li>Relevance filtering: engineered a mechanism to determine if a user's question is relevant to the ingested documents, preventing off-topic responses</li>
-                <li>User-friendly interface: created an intuitive chat interface using Angular, allowing users to easily interact with the AI assistant and view responses</li>
-                <li>Real-time processing: leveraged FastAPI to handle real-time document querying and response generation, ensuring a smooth user experience</li>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+              <li>Document ingestion and processing: developed a system to ingest various document types, clean the data, remove noisy data, process them into chunks, and store in a vector database for efficient retrieval.</li>
+              <li>Contextual querying: implemented a RAG (Retrieval-Augmented Generation) system that allows users to ask questions about the ingested documents and receive relevant answers.</li>
+              <li>Answer generation: utilized LLMs to generate human-like responses based on the retrieved document chunks, ensuring accuracy and coherence.</li>
+              <li>Relevance filtering: engineered a mechanism to determine if a user's question is relevant to the ingested documents, preventing off-topic responses.</li>
+              <li>User-friendly interface: created an intuitive chat interface using Angular, allowing users to easily interact with the AI assistant and view responses.</li>
+              <li>Real-time processing: leveraged FastAPI to handle real-time document querying and response generation, ensuring a smooth user experience.</li>
             </ul>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Patrolling Drone with Emerging Technology</h3>
+            <p class="text-gray-500 text-sm mb-2">Duration: 11/2022 - 05/2023</p>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+              Patrolling drones optimize surveillance, ensuring ongoing monitoring and aiding efficient crisis management.
+            </p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+              <li>Optimized surveillance in key areas with patrolling drones.</li>
+              <li>Ensured continuous monitoring in emergencies.</li>
+              <li>Provided real-time data for effective responses.</li>
+            </ul>
+             <p class="text-gray-600 mt-3">
+              <strong>Technology Stack:</strong> Embedded Systems, IoT, GPS Modules, Camera Modules, Python (for control scripts).
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-3">SIGNBRIDGE - Audio to Sign Language Translator using NLP</h3>
+            <p class="text-gray-500 text-sm mb-2">Duration: 07/2024 - 05/2025 (Expected)</p>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+              An interface to recognize disabled people's conversation and maintain communication. The main purpose of this project is to build an interface that accepts Audio/Voice as input and converts them to corresponding Sign Language for Deaf people.
+            </p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li>Develop an interface that accepts audio/voice input.</li>
+                <li>Utilize Natural Language Processing (NLP) techniques to understand spoken language.</li>
+                <li>Translate recognized speech into corresponding sign language gestures (animation or visual representation).</li>
+                <li>Aim to bridge the communication gap for individuals with hearing impairments.</li>
+            </ul>
+            <p class="text-gray-600 mt-3">
+              <strong>Technology Stack:</strong> Python, NLP Libraries (e.g., NLTK, spaCy), Speech Recognition APIs, Animation Libraries (e.g., Pygame, or web-based like Three.js/Blender for 3D animations if applicable), UI Framework (e.g., Tkinter, PyQt, or Web Framework like Flask/Django).
+            </p>
           </div>
         </div>
       </div>
@@ -137,99 +189,178 @@
 
     <section id="experience" class="bg-white py-16 px-4 sm:px-6 md:px-8">
       <div class="container mx-auto">
-        <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Experience</h2>
-        <div class="bg-gray-50 rounded-lg shadow-md p-6 mb-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Engineer</h3>
-          <p class="text-gray-600 mb-1">Nagarro</p>
-          <p class="text-gray-600 mb-4">March 2023 - Present</p>
-          <p class="text-gray-700 leading-relaxed">
-            Working on a Generative AI application, involved in developing a modern
-            AI-powered document chat assistant using Python, FastAPI, and Angular.
-            Implemented RAG (Retrieval-Augmented Generation) architecture, leveraging
-            vector databases and LLMs for efficient document querying and response
-            generation.
-          </p>
+        <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">Experience</h2>
+        <div class="space-y-10 max-w-3xl mx-auto">
+          <div class="bg-gray-50 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Intern</h3>
+            <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-1">
+                <p class="text-gray-800 font-semibold text-xl">Salesforce</p>
+                <p class="text-gray-500 text-sm mt-1 sm:mt-0">11/2023 - 12/2023</p>
+            </div>
+            <p class="text-gray-500 text-sm mb-4">Hyderabad</p>
+            <p class="text-gray-700 leading-relaxed">
+              Performed an analysis on valuable insights into Salesforce administration, customization, and integration while contributing to innovative projects within a dynamic team environment.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Intern</h3>
+            <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-1">
+                <p class="text-gray-800 font-semibold text-xl">Slashmark</p>
+                <p class="text-gray-500 text-sm mt-1 sm:mt-0">10/2024 - 12/2024</p>
+            </div>
+            <p class="text-gray-500 text-sm mb-4">Hyderabad</p>
+            <p class="text-gray-700 leading-relaxed">
+              Maintained accurate records of all activities performed throughout internship period.
+            </p>
+          </div>
         </div>
-        </div>
+      </div>
     </section>
 
     <section id="contact" class="bg-gray-100 py-16 px-4 sm:px-6 md:px-8">
       <div class="container mx-auto">
-        <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Contact</h2>
-        <div class="text-center">
-          <div class="mb-4">
-            <a href="mailto:manigoud183@gmail.com"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300">
-              Email: manigoud183@gmail.com
-            </a>
-          </div>
-          <a href="https://linkedin.com/in/manideep-ediga" target="_blank" rel="noopener noreferrer" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 mr-2">
-            LinkedIn Profile
+        <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">Get in Touch</h2>
+        <div class="text-center space-y-6 md:space-y-0 md:flex md:flex-wrap md:justify-center md:items-center md:gap-4">
+          <a href="mailto:manigoud183@gmail.com" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 inline-block mr-2 align-middle">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+            </svg>
+            Email Me
           </a>
-          <a href="https://github.com/ManiGoud-183" target="_blank" rel="noopener noreferrer" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300">
-            GitHub Profile
+          <a href="https://linkedin.com/in/manideep-deeksith-goud" target="_blank" rel="noopener noreferrer" class="inline-block bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-lg">
+             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-5 h-5 inline-block mr-2 align-middle fill-current"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/ManiGoud-183" target="_blank" rel="noopener noreferrer" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="w-5 h-5 inline-block mr-2 align-middle fill-current"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            GitHub
           </a>
         </div>
       </div>
     </section>
 
-    <footer class="bg-gray-100 py-16 px-4 sm:px-6 md:px-8">
-      <div class="container mx-auto text-center">
-      </div>
-    </footer>
-
     <script>
+      // Mobile menu toggle
       const hamburgerBtn = document.getElementById("hamburger-btn");
       const mobileMenu = document.getElementById("mobile-menu");
       const closeMenuBtn = document.getElementById("close-menu-btn");
       const mobileMenuLinks = mobileMenu.querySelectorAll("a");
-      const navLinks = document.querySelectorAll('.nav-links a');
-      const sections = document.querySelectorAll('section');
+      const header = document.querySelector('header'); // Get header element
 
       function toggleMobileMenu() {
-        mobileMenu.classList.toggle("hidden");
+        const isHidden = mobileMenu.classList.toggle("hidden");
+        mobileMenu.classList.toggle('translate-x-full', isHidden); // For slide out effect if menu starts off-screen
+        mobileMenu.classList.toggle('translate-x-0', !isHidden); // For slide in effect
+
+        // Prevent body scroll when menu is open
+        if (!isHidden) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
       }
 
       hamburgerBtn.addEventListener("click", toggleMobileMenu);
       closeMenuBtn.addEventListener("click", toggleMobileMenu);
       mobileMenuLinks.forEach(link => {
-        link.addEventListener("click", toggleMobileMenu);
+        link.addEventListener("click", () => {
+          // Smooth scroll is handled globally
+          toggleMobileMenu(); // Close menu after clicking a link
+        });
       });
 
+      // Close mobile menu if clicked outside of it or the hamburger button
       document.addEventListener('click', (event) => {
-        if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && event.target !== hamburgerBtn) {
+        if (!mobileMenu.classList.contains('hidden') && 
+            !mobileMenu.contains(event.target) && 
+            event.target !== hamburgerBtn && 
+            !hamburgerBtn.contains(event.target) /* check if click is inside hamburger */
+           ) {
           toggleMobileMenu();
         }
       });
+      
+      // Smooth scrolling for all anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const href = this.getAttribute('href');
+          if (href.length > 1 && document.querySelector(href)) {
+            e.preventDefault();
+            const targetElement = document.querySelector(href);
+            const headerOffset = header.offsetHeight; // Get header height
+            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - headerOffset;
+      
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
+        });
+      });
+
+      // Active navigation link highlighting on scroll
+      const navLinksDesktop = document.querySelectorAll('header nav ul li a');
+      const navLinksMobile = document.querySelectorAll('#mobile-menu nav ul li a');
+      const allNavLinks = [...navLinksDesktop, ...navLinksMobile];
+      const sections = document.querySelectorAll('section'); // Assuming all main content sections have the 'section' tag
 
       function updateActiveNavLink() {
         let currentSectionId = '';
+        const headerHeight = header.offsetHeight; // Get current header height
+
         sections.forEach(section => {
           const sectionTop = section.offsetTop;
           const sectionHeight = section.clientHeight;
-          if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+          // Check if the top of the section is within a certain range from the top of the viewport, considering header height
+          if (window.scrollY >= sectionTop - headerHeight - 50 && window.scrollY < sectionTop + sectionHeight - headerHeight - 50) {
             currentSectionId = section.getAttribute('id');
           }
         });
+        
+        allNavLinks.forEach(link => {
+          link.classList.remove('active', 'text-indigo-300', 'md:text-indigo-200', 'font-semibold'); // Reset styles
+          const linkHref = link.getAttribute('href').slice(1);
 
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href').slice(1) === currentSectionId) {
-            link.classList.add('active');
+          if (linkHref === currentSectionId) {
+            link.classList.add('active', 'font-semibold');
+            if (link.closest('header nav')) { // Desktop link
+                link.classList.add('md:text-indigo-200'); // A lighter, distinct color for active desktop link
+            } else { // Mobile link
+                link.classList.add('text-indigo-300'); // Active color for mobile link
+            }
+          } else {
+            // Default non-active styles
+             if (link.closest('header nav')) { // Desktop link
+                link.classList.add('hover:text-gray-200');
+            } else { // Mobile link
+                link.classList.add('hover:text-indigo-300');
+            }
           }
         });
       }
 
       window.addEventListener('scroll', updateActiveNavLink);
-
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
-        });
+      window.addEventListener('load', () => {
+        // Adjust padding for the first section dynamically on load
+        const firstSection = document.querySelector('section:first-of-type');
+        if (firstSection) {
+            const headerHeight = header.offsetHeight;
+            firstSection.style.paddingTop = `${headerHeight + 20}px`; // Add a little extra buffer
+        }
+        updateActiveNavLink(); // Initial call to set active link
       });
+       window.addEventListener('resize', () => {
+        // Adjust padding for the first section dynamically on resize
+        const firstSection = document.querySelector('section:first-of-type');
+        if (firstSection) {
+            const headerHeight = header.offsetHeight;
+            firstSection.style.paddingTop = `${headerHeight + 20}px`;
+        }
+        updateActiveNavLink(); // Update active links on resize
+      });
+
     </script>
   </body>
 </html>
